@@ -1,7 +1,7 @@
 <%@page pageEncoding="GBK"%>
 <%@page import="java.util.*,java.sql.*,com.lqt.test.*,java.io.*" %>
 <%!
-private void tree(Set<Article> articles,Connection conn,int id,int grade){
+private void tree(List<Article> articles,Connection conn,int id,int grade){
 	String sql="select * from article where pid = "+id;
 	Statement stmt=DB.createStmt(conn);
 	ResultSet rs=DB.executeQuery(stmt, sql);
@@ -26,7 +26,7 @@ private void tree(Set<Article> articles,Connection conn,int id,int grade){
 }	
  %>
  <%
- Set<Article> articles = new HashSet<Article>();
+ List<Article> articles = new ArrayList<Article>();
  Connection conn = DB.getConn();
  tree(articles,conn,0,0);
  DB.close(conn);
@@ -100,19 +100,28 @@ private void tree(Set<Article> articles,Connection conn,int id,int grade){
                   </tr>
                 </thead>
                 <tbody>
+                <%
+                	for(Iterator<Article> it =articles.iterator();it.hasNext(); ){
+                		Article a =it.next();
+                		String pre ="";
+                		for(int i=0;i<a.getGrade();i++){
+                			pre+="----";
+                		}
+                 %>
                   <tr class="jive-even">
                     <td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="images/read-16x16.gif" alt="已读" border="0" height="16" width="16">
                         <!-- div-->
                       </div></td>
                     <td nowrap="nowrap" width="1%">&nbsp;
                       &nbsp;</td>
-                    <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744236&amp;tstart=25">初学java遇一难题！！望大家能帮忙一下 谢谢了</a></td>
-                    <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">fei870407</a> </span></td>
+                    <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="articleDetail.jsp?id=<%=a.getId()%>"><%=pre+a.getTitle() %></a></td>
+                    <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">lqt</a> </span></td>
                     <td class="jive-view-count" width="1%"> 104</td>
                     <td class="jive-msg-count" width="1%"> 5</td>
-                    <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> 2007-9-13 上午9:31 <br>
-                        by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780182#780182" title="jingjiangjun" style="">jingjiangjun &#187;</a> </div></td>
+                    <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> <%=a.getDatetime() %> <br>
+                        by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780182#780182" title="jingjiangjun" style="">lqt &#187;</a> </div></td>
                   </tr>
+                  <%--
                   <tr class="jive-odd">
                     <td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="images/read-16x16.gif" alt="已读" border="0" height="16" width="16">
                         <!-- div-->
@@ -126,6 +135,8 @@ private void tree(Set<Article> articles,Connection conn,int id,int grade){
                     <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> 2007-9-13 上午8:40 <br>
                         by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780172#780172" title="downing114" style="">downing114 &#187;</a> </div></td>
                   </tr>
+                   --%>
+                  <%} %>
                 </tbody>
               </table>
             </div>
