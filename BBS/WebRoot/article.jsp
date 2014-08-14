@@ -17,7 +17,7 @@ private void tree(Set<Article> articles,Connection conn,int id,int grade){
 			a.setGrade(grade);
 			articles.add(a);
 			if(!a.getIsleaf()){
-				tree(articles,conn,id,grade +1);
+				tree(articles,conn,a.getId(),grade +1);
 			}
 		}
 	}catch(SQLException e){
@@ -105,10 +105,6 @@ private void tree(Set<Article> articles,Connection conn,int id,int grade){
                         <!-- div-->
                       </div></td>
                     <td nowrap="nowrap" width="1%">&nbsp;
-                      
-                      
-                      
-                      
                       &nbsp;</td>
                     <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744236&amp;tstart=25">初学java遇一难题！！望大家能帮忙一下 谢谢了</a></td>
                     <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">fei870407</a> </span></td>
@@ -122,10 +118,6 @@ private void tree(Set<Article> articles,Connection conn,int id,int grade){
                         <!-- div-->
                       </div></td>
                     <td nowrap="nowrap" width="1%">&nbsp;
-                      
-                      
-                      
-                      
                       &nbsp;</td>
                     <td class="jive-thread-name" width="95%"><a id="jive-thread-2" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744234&amp;tstart=25">请 兄弟们指点下那里 错误，，，</a></td>
                     <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226028">403783154</a> </span></td>

@@ -1,12 +1,11 @@
 package com.lqt.test;
 import java.sql.*;
-import java.sql.DriverManager;
 public class DB {
 	public static Connection getConn(){
 		Connection conn=null;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/bbs?user=root&password=root");
+			conn =DriverManager.getConnection("jdbc:mysql://localhost/bbs?user=root&password=root");
 			
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
