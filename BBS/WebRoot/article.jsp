@@ -13,6 +13,7 @@ private void tree(List<Article> articles,Connection conn,int id,int grade){
 			a.setRootid(rs.getInt("rootid"));
 			a.setTitle(rs.getString("title"));
 			a.setDatetime(rs.getTimestamp("pdate"));
+			a.setCont(rs.getString("cont"));
 			a.setIsleaf(rs.getInt("isleaf") == 0 ? true : false);
 			a.setGrade(grade);
 			articles.add(a);

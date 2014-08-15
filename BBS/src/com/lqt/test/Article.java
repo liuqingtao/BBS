@@ -1,5 +1,7 @@
 package com.lqt.test;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Article {
@@ -10,6 +12,13 @@ public class Article {
 	private Date datetime;
 	private boolean isleaf;
 	private int grade;
+	private String cont;
+	public String getCont() {
+		return cont;
+	}
+	public void setCont(String cont) {
+		this.cont = cont;
+	}
 	public int getGrade() {
 		return grade;
 	}
@@ -51,6 +60,22 @@ public class Article {
 	}
 	public void setIsleaf(boolean isleaf) {
 		this.isleaf = isleaf;
+	}
+	
+	public void initFromRs(ResultSet rs){
+		try{
+			setId(rs.getInt("id"));
+			setPid(rs.getInt("pid"));
+			setRootid(rs.getInt("rootid"));
+			setTitle(rs.getString("title"));
+			setCont(rs.getString("cont"));
+			setDatetime(rs.getTimestamp("pdate"));
+			setIsleaf(rs.getInt("isleaf") == 0 ? true : false);
+			setGrade(grade);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
