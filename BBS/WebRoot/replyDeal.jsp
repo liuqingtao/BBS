@@ -19,12 +19,20 @@
     DB.close(pstmt);
     DB.close(conn);
    %>
+   <span id="time">10</span>秒后自动跳转，如果不跳转，请点击下面链接
 <script language="JavaScript1.2" type="text/javascript">
 <!--
 //  Place this in the 'head' section of your page.  
 
-function delayURL(url, time) {
-    setTimeout("top.location.href='" + url + "'", time);
+function delayURL(url) {
+	var delay =document.getElementById("time").innerHTML;
+	if(delay>0){
+		delay--;
+		document.getElementById("time").innerHTML=delay;
+	}else{
+	window.top.location.href=url;
+	}
+    setTimeout("delayURL('" + url + "')", 1000);
 }
 
 //-->
@@ -32,8 +40,7 @@ function delayURL(url, time) {
 </script>
 
 <!-- Place this in the 'body' section -->
-3秒后自动跳转，如果不跳转，请点击下面链接
 <a href="article.jsp">回到主题列表</a>
 <script type="text/javascript">
-	delayURL("article.jsp",3000);
+	delayURL("article.jsp");
 </script>
