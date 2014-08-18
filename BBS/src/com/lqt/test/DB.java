@@ -69,4 +69,16 @@ public class DB {
 		}
 		rs=null;
 	}
+	
+	public static PreparedStatement prepareStmt(Connection conn,String sql){
+		PreparedStatement stmt =null;
+		try {
+			stmt = conn.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return stmt;
+	}
 }

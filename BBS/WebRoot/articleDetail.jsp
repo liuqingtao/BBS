@@ -47,8 +47,8 @@ if(a == null) {
 <title>Java|Java世界_中文论坛|ChinaJavaWorld技术论坛 : 初学java遇一难题！！望大家能帮忙一下 ...</title>
 <meta http-equiv="content-type" content="text/html; charset=GBK">
 <link rel="stylesheet" type="text/css" href="images/style.css" title="Integrated Styles">
-<script language="JavaScript" type="text/javascript" src="images/global.js"></script>
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://bbs.chinajavaworld.com/rss/rssmessages.jspa?threadID=744236">
+<script src="ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="ckeditor/samples/sample.css" title="Integrated Styles">
 </head>
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -140,8 +140,20 @@ if(a == null) {
                               </tr>
                               <tr>
                                 <td colspan="4" style="border-top: 1px solid rgb(204, 204, 204);"><br>
-                                 <%=a.getCont() %> <br>
-                                  <br>
+                                <textarea id="cont" name="cont" rows="15" cols="80"><%=a.getCont() %></textarea>
+                                <script>
+
+			// This call can be placed at any point after the
+			// <textarea>, or inside a <head><script> in a
+			// window.onload event handler.
+
+			// Replace the <textarea id="editor"> with an CKEditor
+			// instance, using default configurations.
+
+			CKEDITOR.replace( 'cont' );
+
+		</script>
+                                <br>
                                 </td>
                               </tr>
                               <tr>
